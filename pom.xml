@@ -45,8 +45,8 @@
 
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</conncetion>
-        <developerConnection> scm:svn:https://svn.apache.org/repos/asf/sling/trunk/bundles/extensions/models/validation-impl</developerConnection>
-        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-models-validation-impl.git.git</url>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</developerConnection>
+        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-models-validation-impl.git</url>
     </scm>
     <build>
         <plugins>
