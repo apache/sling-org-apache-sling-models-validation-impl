@@ -44,9 +44,9 @@
     </properties>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/sling/trunk/bundles/extensions/models/validation-impl</connection>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</conncetion>
         <developerConnection> scm:svn:https://svn.apache.org/repos/asf/sling/trunk/bundles/extensions/models/validation-impl</developerConnection>
-        <url>http://svn.apache.org/viewvc/sling/trunk/bundles/extensions/models/validation-impl</url>
+        <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-models-validation-impl.git.git</url>
     </scm>
     <build>
         <plugins>
