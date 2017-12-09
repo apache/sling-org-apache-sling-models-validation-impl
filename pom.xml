@@ -115,6 +115,7 @@
                 </executions>
                 <configuration>
                     <servers>
+                        <!-- this configuration applies to both 'start' and 'stop' -->
                         <server>
                             <id>singleinstance</id>
                             <port>${http.port}</port>
@@ -122,6 +123,7 @@
                             <stdOutFile>sling/logs/stdout.log</stdOutFile>
                         </server>
                     </servers>
+                    <!-- this configuration only applies to 'prepare-package' and 'package' -->
                     <disableExtendingMavenClasspath>true</disableExtendingMavenClasspath>
                 </configuration>
             </plugin>
