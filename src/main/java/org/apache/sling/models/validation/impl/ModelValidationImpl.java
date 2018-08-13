@@ -16,8 +16,6 @@
  */
 package org.apache.sling.models.validation.impl;
 
-import javax.annotation.Nonnull;
-
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.factory.InvalidModelException;
@@ -29,6 +27,7 @@ import org.apache.sling.validation.ValidationFailure;
 import org.apache.sling.validation.ValidationResult;
 import org.apache.sling.validation.ValidationService;
 import org.apache.sling.validation.model.ValidationModel;
+import org.jetbrains.annotations.NotNull;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -84,7 +83,7 @@ public class ModelValidationImpl implements ModelValidation {
         }
     }
     
-    private RuntimeException validate(@Nonnull Resource resource, boolean required) {
+    private RuntimeException validate(@NotNull Resource resource, boolean required) {
         try {
             ValidationModel validationModel = validation.getValidationModel(resource, true);
             if (validationModel == null) {
