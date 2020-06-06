@@ -19,12 +19,14 @@ package org.apache.sling.models.validation;
 import org.apache.sling.models.factory.InvalidModelException;
 import org.apache.sling.validation.ValidationFailure;
 import org.apache.sling.validation.ValidationResult;
+import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * Exception embedding a {@link ValidationResult} from Sling Validation.
  *
  */
-public class InvalidResourceException extends InvalidModelException {
+@ProviderType
+public final class InvalidResourceException extends InvalidModelException {
 
     /**
      * 
