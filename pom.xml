@@ -17,8 +17,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -26,11 +25,11 @@
         <groupId>org.apache.sling</groupId>
         <artifactId>sling-bundle-parent</artifactId>
         <version>39</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <artifactId>org.apache.sling.models.validation-impl</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <name>Apache Sling Models Validation Implementation</name>
     <description>Validation Implementation which leverages Sling Validation</description>
@@ -40,14 +39,15 @@
         <http.host>localhost</http.host>
         <!-- start with -DkeepITServerRunning=true to allow to rerun ITs or inspect the server after the ITs have been executed there -->
         <keepITServerRunning>false</keepITServerRunning>
-        <project.build.outputTimestamp>2020-01-22T15:10:15Z</project.build.outputTimestamp>
+        <project.build.outputTimestamp>2020-06-07T09:12:06Z</project.build.outputTimestamp>
     </properties>
 
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</connection>
         <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</developerConnection>
         <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-models-validation-impl.git</url>
-    </scm>
+      <tag>org.apache.sling.models.validation-impl-1.0.0</tag>
+  </scm>
     <build>
         <plugins>
             <plugin>
