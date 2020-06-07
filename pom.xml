@@ -127,6 +127,7 @@
                     </servers>
                     <!-- this configuration only applies to 'prepare-package' and 'package' -->
                     <disableExtendingMavenClasspath>true</disableExtendingMavenClasspath>
+                    <attachArtifact>false</attachArtifact>
                 </configuration>
             </plugin>
             <plugin>
