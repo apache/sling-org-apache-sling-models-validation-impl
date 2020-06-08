@@ -53,7 +53,7 @@ public class ModelValidationIT {
 
     private ResourceResolver resourceResolver = null;
 
-    private static final int MODEL_AVAILABLE_TIMEOUT_SECONDS = Integer.getInteger("ValidationServiceIT.ModelAvailabelTimeoutSeconds", 10);
+    private static final int MODEL_AVAILABLE_TIMEOUT_SECONDS = Integer.getInteger("ValidationServiceIT.ModelAvailabelTimeoutSeconds", 60);
 
     @Before
     public void setUp() throws InterruptedException, LoginException {
