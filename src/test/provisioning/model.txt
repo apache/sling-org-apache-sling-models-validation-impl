@@ -16,26 +16,23 @@
 #  specific language governing permissions and limitations
 #  under the License.
 #
-[feature name=models.validation-impl.it]
+
+# features are ordered alphabetically, so make this feature the last one in order to overwrite configurations with same PIDs from other features
+[feature name=zzz.models.validation-impl.it]
 # Dependencies
 [artifacts]
-  org.apache.sling/org.apache.sling.launchpad/9/slingstart
+  org.apache.sling/org.apache.sling.starter/11/slingstart
   # this is necessary to execute the tests
-  org.apache.sling/org.apache.sling.junit.core/1.0.26
+  org.apache.sling/org.apache.sling.junit.core/1.0.28
   # deploy the to-be-tested bundle as well
-  org.apache.sling/org.apache.sling.models.validation-impl/1.0.0-SNAPSHOT
+  org.apache.sling/org.apache.sling.models.validation-impl
 
 [configurations]
-  # configure service user mapping for validation framework
-  org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended-validation
-    user.mapping=[ \
-    "org.apache.sling.validation.core\=sling-readall", \
-    ]
-    
+
   # configure service user mapping for junit core (being used in the IT itself)
   org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended-junit
-    user.mapping=[ \
-    "org.apache.sling.junit.core\=sling-readall", \
+    user.mapping=[
+    "org.apache.sling.junit.core\=sling-readall"
     ]
 
 [settings]
