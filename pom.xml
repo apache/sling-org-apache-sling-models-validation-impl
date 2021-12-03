@@ -148,7 +148,7 @@
                         <ClientSideTeleporter.testBundleDirectory>${project.build.directory}/test-bundles</ClientSideTeleporter.testBundleDirectory>
                         <ClientSideTeleporter.enableLogging>true</ClientSideTeleporter.enableLogging>
                         <!-- deploy test content and some Sling models with the test bundle -->
-                        <ClientSideTeleporter.additionalBundleHeaders>Sling-Initial-Content:SLING-CONTENT;overwrite:=true,Sling-Model-Packages:org.apache.sling.models.validation.impl.it</ClientSideTeleporter.additionalBundleHeaders>
+                        <ClientSideTeleporter.additionalBundleHeaders>Sling-Initial-Content:SLING-CONTENT/apps/sling/validation;overwrite:=true;path:=/apps/sling/validation,Sling-Model-Packages:org.apache.sling.models.validation.impl.it</ClientSideTeleporter.additionalBundleHeaders>
                         <ClientSideTeleporter.includeDependencyPrefixes>org.apache.sling.models.validation.impl.it</ClientSideTeleporter.includeDependencyPrefixes>
                     </systemPropertyVariables>
                 </configuration>
@@ -224,7 +224,7 @@
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.junit.teleporter</artifactId>
-            <version>1.0.20</version>
+            <version>1.0.22</version>
             <scope>test</scope>
         </dependency>
         <dependency>
