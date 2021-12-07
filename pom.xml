@@ -29,7 +29,7 @@
     </parent>
 
     <artifactId>org.apache.sling.models.validation-impl</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
 
     <name>Apache Sling Models Validation Implementation</name>
     <description>Validation Implementation which leverages Sling Validation</description>
@@ -39,14 +39,14 @@
         <http.host>localhost</http.host>
         <!-- start with -DkeepITServerRunning=true to allow to rerun ITs or inspect the server after the ITs have been executed there -->
         <keepITServerRunning>false</keepITServerRunning>
-        <project.build.outputTimestamp>2021-12-07T08:23:34Z</project.build.outputTimestamp>
+        <project.build.outputTimestamp>2021-12-07T08:24:38Z</project.build.outputTimestamp>
     </properties>
 
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</connection>
         <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</developerConnection>
         <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-models-validation-impl.git</url>
-      <tag>org.apache.sling.models.validation-impl-1.1.0</tag>
+      <tag>HEAD</tag>
   </scm>
     <build>
         <plugins>
