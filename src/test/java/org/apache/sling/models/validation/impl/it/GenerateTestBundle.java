@@ -76,6 +76,10 @@ public class GenerateTestBundle {
         // register sling models
         bundle.setHeader("Sling-Model-Classes", modelClassNames.stream().collect(Collectors.joining(",")));
 
+        // add all test resources from SLING-CONTENT
+        bundle.setHeader("Sling-Initial-Content", "SLING-CONTENT/apps/sling/validation;overwrite:=true;path:=/apps/sling/validation");
+        addTestResources(bundle);
+
         return bundle;
     }
 
@@ -90,4 +94,25 @@ public class GenerateTestBundle {
             return scanResult.getAllClasses().stream().map(ClassInfo::loadClass).collect(Collectors.toList());
         }
     }
+
+    /**
+     * Add all test resources from SLING-CONTENT directory to the bundle.
+     * Discovers resources from classpath using ClassGraph.
+     */
+    static void addTestResources(TinyBundle bundle) {
+        try (ScanResult scanResult = new ClassGraph()
+                .acceptPaths("SLING-CONTENT")
+                .scan()) {
+            scanResult.getAllResources().forEach(resource -> {
+                try {
+                    String resourcePath = resource.getPath();
+                    byte[] content = resource.load();
+                    bundle.addResource(resourcePath, new ByteArrayInputStream(content));
+                } catch (Exception e) {
+                    throw new RuntimeException("Failed to load resource: " + resource.getPath(), e);
+                }
+            });
+        }
+    }
+
 }
