@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.sling</groupId>
         <artifactId>sling-bundle-parent</artifactId>
-        <version>49</version>
+        <version>52</version>
         <relativePath />
     </parent>
 
@@ -35,7 +35,7 @@
     <description>Validation Implementation which leverages Sling Validation</description>
 
     <properties>
-        <sling.java.version>8</sling.java.version>
+        <sling.java.version>11</sling.java.version>
         <http.host>localhost</http.host>
         <!-- start with -DkeepITServerRunning=true to allow to rerun ITs or inspect the server after the ITs have been executed there -->
         <keepITServerRunning>false</keepITServerRunning>
@@ -47,114 +47,8 @@
         <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</developerConnection>
         <url>https://github.com/apache/sling-org-apache-sling-models-validation-impl.git</url>
       <tag>HEAD</tag>
-  </scm>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>biz.aQute.bnd</groupId>
-                <artifactId>bnd-baseline-maven-plugin</artifactId>
-                <configuration>
-                    <failOnMissing>false</failOnMissing>
-                </configuration>
-            </plugin>
-            <plugin>
-                <!-- Find free ports to run our server -->
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>reserve-server-port</id>
-                        <goals>
-                            <goal>reserve-network-port</goal>
-                        </goals>
-                        <phase>pre-integration-test</phase>
-                        <configuration>
-                            <portNames>
-                                <!-- used port name must be stored in property because it must be used for the base url -->
-                                <portName>http.port</portName>
-                            </portNames>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <!-- the Sling instance is provisioned from the model in src/main/provisioning/model.txt -->
-                <groupId>org.apache.sling</groupId>
-                <artifactId>slingstart-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>prepare-launchpad-package</id>
-                        <goals>
-                            <goal>prepare-package</goal>
-                        </goals>
-                        <phase>pre-integration-test</phase>
-                    </execution>
-                    <execution>
-                        <id>build-launchpad-package</id>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                        <phase>pre-integration-test</phase>
-                    </execution>
-                    <execution>
-                        <id>start-container-before-IT</id>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                        <configuration>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>stop-container-after-IT</id>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                        <configuration>
-                            <shouldBlockUntilKeyIsPressed>${keepITServerRunning}</shouldBlockUntilKeyIsPressed>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <servers>
-                        <!-- this configuration applies to both 'start' and 'stop' -->
-                        <server>
-                            <id>singleinstance</id>
-                            <port>${http.port}</port>
-                            <vmOpts>${sling.vm.options}</vmOpts>
-                            <stdOutFile>sling/logs/stdout.log</stdOutFile>
-                        </server>
-                    </servers>
-                    <!-- this configuration only applies to 'prepare-package' and 'package' -->
-                    <disableExtendingMavenClasspath>true</disableExtendingMavenClasspath>
-                    <attachArtifact>false</attachArtifact>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <systemPropertyVariables>
-                        <ClientSideTeleporter.baseUrl>http://${http.host}:${http.port}/</ClientSideTeleporter.baseUrl>
-                        <ClientSideTeleporter.testReadyTimeoutSeconds>20</ClientSideTeleporter.testReadyTimeoutSeconds>
-                        <ClientSideTeleporter.testBundleDirectory>${project.build.directory}/test-bundles</ClientSideTeleporter.testBundleDirectory>
-                        <ClientSideTeleporter.enableLogging>true</ClientSideTeleporter.enableLogging>
-                        <!-- deploy test content and some Sling models with the test bundle -->
-                        <ClientSideTeleporter.additionalBundleHeaders>Sling-Initial-Content:SLING-CONTENT/apps/sling/validation;overwrite:=true;path:=/apps/sling/validation,Sling-Model-Packages:org.apache.sling.models.validation.impl.it</ClientSideTeleporter.additionalBundleHeaders>
-                        <ClientSideTeleporter.includeDependencyPrefixes>org.apache.sling.models.validation.impl.it</ClientSideTeleporter.includeDependencyPrefixes>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -233,4 +127,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>
