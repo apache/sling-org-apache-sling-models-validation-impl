@@ -97,21 +97,12 @@ public class GenerateTestBundle {
 
     /**
      * Add all test resources from SLING-CONTENT directory to the bundle.
-     * Discovers resources from classpath using ClassGraph.
      */
     static void addTestResources(TinyBundle bundle) {
         try (ScanResult scanResult = new ClassGraph()
                 .acceptPaths("SLING-CONTENT")
                 .scan()) {
-            scanResult.getAllResources().forEach(resource -> {
-                try {
-                    String resourcePath = resource.getPath();
-                    byte[] content = resource.load();
-                    bundle.addResource(resourcePath, new ByteArrayInputStream(content));
-                } catch (Exception e) {
-                    throw new RuntimeException("Failed to load resource: " + resource.getPath(), e);
-                }
-            });
+            scanResult.getAllResources().forEach(resource -> bundle.addResource(resource.getPath(), resource.getURL()));
         }
     }
 
