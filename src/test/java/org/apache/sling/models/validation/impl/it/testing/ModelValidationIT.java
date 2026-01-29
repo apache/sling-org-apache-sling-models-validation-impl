@@ -14,9 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.sling.models.validation.impl.it;
-
-import java.io.IOException;
+package org.apache.sling.models.validation.impl.it.testing;
 
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
@@ -26,6 +24,9 @@ import org.apache.sling.junit.rules.TeleporterRule;
 import org.apache.sling.models.factory.ModelFactory;
 import org.apache.sling.models.factory.ValidationException;
 import org.apache.sling.models.validation.InvalidResourceException;
+import org.apache.sling.models.validation.impl.it.testbundle.models.ModelValidationDisabled;
+import org.apache.sling.models.validation.impl.it.testbundle.models.ModelValidationOptional;
+import org.apache.sling.models.validation.impl.it.testbundle.models.ModelValidationRequired;
 import org.apache.sling.validation.ValidationService;
 import org.apache.sling.validation.model.ValidationModel;
 import org.junit.After;
@@ -38,7 +39,7 @@ import org.junit.rules.ExpectedException;
 public class ModelValidationIT {
 
     @Rule
-    public final TeleporterRule teleporter = TeleporterRule.forClass(getClass()).withResources("/SLING-CONTENT/");
+    public final TeleporterRule teleporter = TeleporterRule.forClass(getClass(), "SM_Teleporter");
 
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
@@ -83,7 +84,7 @@ public class ModelValidationIT {
     }
 
     @Test
-    public void testValidModel() throws IOException {
+    public void testValidModel() {
         // create a valid resource
         Resource contentResource = resourceResolver.getResource("/apps/sling/validation/content/contentValid");
         Assert.assertNotNull("Content resource must exist", contentResource);
@@ -93,7 +94,7 @@ public class ModelValidationIT {
     }
 
     @Test
-    public void testInvalidModel() throws IOException {
+    public void testInvalidModel() {
         // create a valid resource
         Resource contentResource = resourceResolver.getResource("/apps/sling/validation/content/contentInvalid");
         Assert.assertNotNull("Content resource must exist", contentResource);
