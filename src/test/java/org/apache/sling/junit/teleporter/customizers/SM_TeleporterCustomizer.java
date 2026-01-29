@@ -23,7 +23,7 @@ import java.net.URI;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.sling.junit.rules.TeleporterRule;
-import org.apache.sling.models.impl.ModelAdapterFactory;
+import org.apache.sling.models.validation.impl.ModelValidationImpl;
 import org.apache.sling.testing.clients.ClientException;
 import org.apache.sling.testing.clients.osgi.OsgiConsoleClient;
 import org.apache.sling.testing.serversetup.instance.SlingTestBase;
@@ -37,7 +37,7 @@ public class SM_TeleporterCustomizer implements TeleporterRule.Customizer {
 
     private static final SlingTestBase S = new SlingTestBase();
 
-    private static final Class[] EXPECTED_COMPONENTS = new Class[] {ModelAdapterFactory.class};
+    private static final Class[] EXPECTED_COMPONENTS = new Class[] {ModelValidationImpl.class};
 
     @Override
     public void customize(TeleporterRule t, String options) {
