@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.sling.models.validation.impl.it;
+package org.apache.sling.models.validation.impl.it.testbundle.models;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.ValidationStrategy;
 
-@Model(validation=ValidationStrategy.REQUIRED, adaptables = { Resource.class })
-public class ModelValidationRequired {
+@Model(validation=ValidationStrategy.OPTIONAL, adaptables = { Resource.class })
+public class ModelValidationOptional {
 
 }
