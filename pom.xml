@@ -36,7 +36,6 @@
     <properties>
         <project.build.outputTimestamp>2021-12-07T08:24:38Z</project.build.outputTimestamp>
         <sling.java.version>11</sling.java.version>
-        <validation.api.version>1.0.0</validation.api.version>
         <!-- integration tests -->
         <sling.starter.version>14-SNAPSHOT</sling.starter.version>
         <starter.min.bundles.count>200</starter.min.bundles.count>
@@ -92,7 +91,7 @@
         <dependency>
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.validation.api</artifactId>
-            <version>${validation.api.version}</version>
+            <version>1.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -278,7 +277,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <features>src/test/it-features</features>
-                    <replacePropertyVariables>validation.api.version,it.models.log.level</replacePropertyVariables>
+                    <replacePropertyVariables>it.models.log.level</replacePropertyVariables>
                     <skipAddFeatureDependencies>true</skipAddFeatureDependencies>
                     <aggregates>
                         <aggregate>
@@ -288,7 +287,6 @@
                                 <http.port>${http.port}</http.port>
                             </variablesOverrides>
                             <artifactsOverrides>
-                                <artifactsOverride>org.apache.sling:org.apache.sling.validation.api:HIGHEST</artifactsOverride>
                                 <artifactsOverride>org.apache.sling:org.apache.sling.models.validation-impl:HIGHEST</artifactsOverride>
                             </artifactsOverrides>
                             <includeArtifact>

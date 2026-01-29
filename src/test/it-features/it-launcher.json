@@ -1,10 +1,6 @@
 {
     "bundles": [
         {
-            "id": "org.apache.sling/org.apache.sling.validation.api/${validation.api.version}",
-            "start-order": 20
-        },
-        {
             "id": "org.apache.sling/org.apache.sling.models.validation-impl/${project.version}",
             "start-order": 20
         },
