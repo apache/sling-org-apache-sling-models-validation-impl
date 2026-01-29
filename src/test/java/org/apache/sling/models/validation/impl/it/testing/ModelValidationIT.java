@@ -1,18 +1,20 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 package org.apache.sling.models.validation.impl.it.testing;
 
@@ -54,7 +56,8 @@ public class ModelValidationIT {
 
     private ResourceResolver resourceResolver = null;
 
-    private static final int MODEL_AVAILABLE_TIMEOUT_SECONDS = Integer.getInteger("ValidationServiceIT.ModelAvailabelTimeoutSeconds", 60);
+    private static final int MODEL_AVAILABLE_TIMEOUT_SECONDS =
+            Integer.getInteger("ValidationServiceIT.ModelAvailabelTimeoutSeconds", 60);
 
     @Before
     public void setUp() throws InterruptedException, LoginException {
@@ -63,14 +66,16 @@ public class ModelValidationIT {
         long timeoutMs = System.currentTimeMillis() + MODEL_AVAILABLE_TIMEOUT_SECONDS * 1000l;
         // wait for the model to become available (internally relies on search, is therefore asynchronous)
         do {
-            validationModel = validationService.getValidationModel("validation/test/resourceType1",
-                    "/validation/testing/fakeFolder1/resource", false);
+            validationModel = validationService.getValidationModel(
+                    "validation/test/resourceType1", "/validation/testing/fakeFolder1/resource", false);
             if (validationModel == null) {
                 Thread.sleep(500);
             }
         } while (validationModel == null && System.currentTimeMillis() < timeoutMs);
-        Assert.assertNotNull("Could not get validation model for resource type 'validation/test/resourceType1' within "
-                + MODEL_AVAILABLE_TIMEOUT_SECONDS + " seconds", validationModel);
+        Assert.assertNotNull(
+                "Could not get validation model for resource type 'validation/test/resourceType1' within "
+                        + MODEL_AVAILABLE_TIMEOUT_SECONDS + " seconds",
+                validationModel);
         modelFactory = teleporter.getService(ModelFactory.class);
         resourceResolverFactory = teleporter.getService(ResourceResolverFactory.class);
         resourceResolver = resourceResolverFactory.getServiceResourceResolver(null);
@@ -108,10 +113,12 @@ public class ModelValidationIT {
     @Test
     public void testModelWithoutRequiredValidationModel() {
         // create a valid resource
-        Resource contentResource = resourceResolver.getResource("/apps/sling/validation/content/contentWithNoValidationModel");
+        Resource contentResource =
+                resourceResolver.getResource("/apps/sling/validation/content/contentWithNoValidationModel");
         Assert.assertNotNull("Content resource must exist", contentResource);
         expectedEx.expect(ValidationException.class);
-        expectedEx.expectMessage("Could not find validation model for resource '/apps/sling/validation/content/contentWithNoValidationModel' with type 'test/resourceType1'");
+        expectedEx.expectMessage(
+                "Could not find validation model for resource '/apps/sling/validation/content/contentWithNoValidationModel' with type 'test/resourceType1'");
         // generate a model
         modelFactory.createModel(contentResource, ModelValidationRequired.class);
     }
@@ -119,7 +126,8 @@ public class ModelValidationIT {
     @Test
     public void testModelWithoutOptionalValidationModel() {
         // create a valid resource
-        Resource contentResource = resourceResolver.getResource("/apps/sling/validation/content/contentWithNoValidationModel");
+        Resource contentResource =
+                resourceResolver.getResource("/apps/sling/validation/content/contentWithNoValidationModel");
         Assert.assertNotNull("Content resource must exist", contentResource);
         // generate a model
         ModelValidationOptional model = modelFactory.createModel(contentResource, ModelValidationOptional.class);
@@ -129,7 +137,8 @@ public class ModelValidationIT {
     @Test
     public void testInvalidModelWithValidationDisabled() {
         // create a valid resource
-        Resource contentResource = resourceResolver.getResource("/apps/sling/validation/content/contentWithNoValidationModel");
+        Resource contentResource =
+                resourceResolver.getResource("/apps/sling/validation/content/contentWithNoValidationModel");
         Assert.assertNotNull("Content resource must exist", contentResource);
         // generate a model
         ModelValidationDisabled model = modelFactory.createModel(contentResource, ModelValidationDisabled.class);

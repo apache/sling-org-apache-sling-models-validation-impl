@@ -29,14 +29,13 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
+import io.github.classgraph.ScanResult;
 import org.apache.sling.models.annotations.Model;
 import org.ops4j.pax.tinybundles.TinyBundle;
 import org.ops4j.pax.tinybundles.TinyBundles;
 import org.osgi.framework.Constants;
-
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.ScanResult;
 
 /**
  * This uses tinybundles to create a test bundle that is deployed to sling
@@ -77,7 +76,9 @@ public class GenerateTestBundle {
         bundle.setHeader("Sling-Model-Classes", modelClassNames.stream().collect(Collectors.joining(",")));
 
         // add all test resources from SLING-CONTENT
-        bundle.setHeader("Sling-Initial-Content", "SLING-CONTENT/apps/sling/validation;overwrite:=true;path:=/apps/sling/validation");
+        bundle.setHeader(
+                "Sling-Initial-Content",
+                "SLING-CONTENT/apps/sling/validation;overwrite:=true;path:=/apps/sling/validation");
         addTestResources(bundle);
 
         return bundle;
@@ -99,11 +100,9 @@ public class GenerateTestBundle {
      * Add all test resources from SLING-CONTENT directory to the bundle.
      */
     static void addTestResources(TinyBundle bundle) {
-        try (ScanResult scanResult = new ClassGraph()
-                .acceptPaths("SLING-CONTENT")
-                .scan()) {
+        try (ScanResult scanResult =
+                new ClassGraph().acceptPaths("SLING-CONTENT").scan()) {
             scanResult.getAllResources().forEach(resource -> bundle.addResource(resource.getPath(), resource.getURL()));
         }
     }
-
 }

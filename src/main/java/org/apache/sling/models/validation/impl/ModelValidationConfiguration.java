@@ -21,10 +21,16 @@ package org.apache.sling.models.validation.impl;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
-@ObjectClassDefinition(name = "Apache Sling Models Validation Configuration (for Sling Validation)", description = "Allows to configure how Sling Models are validated with the help of Sling Validation")
+@ObjectClassDefinition(
+        name = "Apache Sling Models Validation Configuration (for Sling Validation)",
+        description = "Allows to configure how Sling Models are validated with the help of Sling Validation")
 public @interface ModelValidationConfiguration {
     @AttributeDefinition(name = "Disabled")
     boolean disabled() default false;
-    @AttributeDefinition(name = "Severity Threshold", description = "This threshold specifies the minimum severity of the underlying Sling validation failures for making a Sling Model invalid. If all validation failures are below that threshold the model is considered valid.")
+
+    @AttributeDefinition(
+            name = "Severity Threshold",
+            description =
+                    "This threshold specifies the minimum severity of the underlying Sling validation failures for making a Sling Model invalid. If all validation failures are below that threshold the model is considered valid.")
     int severityThreshold() default 0;
 }

@@ -33,6 +33,13 @@
     <name>Apache Sling Models Validation Implementation</name>
     <description>Validation Implementation which leverages Sling Validation</description>
 
+    <scm>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</connection>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/apache/sling-org-apache-sling-models-validation-impl.git</url>
+    </scm>
+
     <properties>
         <project.build.outputTimestamp>2021-12-07T08:24:38Z</project.build.outputTimestamp>
         <sling.java.version>11</sling.java.version>
@@ -42,13 +49,6 @@
         <it.startTimeoutSeconds>60</it.startTimeoutSeconds>
         <it.models.log.level>debug</it.models.log.level>
     </properties>
-
-    <scm>
-        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</connection>
-        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-models-validation-impl.git</developerConnection>
-        <url>https://github.com/apache/sling-org-apache-sling-models-validation-impl.git</url>
-        <tag>HEAD</tag>
-    </scm>
 
     <dependencies>
         <dependency>
